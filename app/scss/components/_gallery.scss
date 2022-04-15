@@ -1,0 +1,116 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 10rem;
+
+    &__img {
+        width: 24vw;
+        height: 15vw;
+        object-fit: cover;
+        box-shadow: .3rem .3rem .1rem $color-red, 
+                    .5rem .5rem .1rem $color-green-light, 
+                    .7rem .7rem .1rem $color-blue,
+                    .9rem .9rem .1rem $color-pink;
+        transition: all .5s;
+
+        @include respond(tab-land) {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__link {
+        position: relative;
+        margin: 4rem 1rem;
+
+        @include respond(tab-land) {
+            width: 40rem;
+            height: 25rem;
+            margin: 5rem;
+        }
+
+        &:hover::before {
+            height: 80%;
+        }
+
+        &:hover::after {
+            width: 90%;
+        }
+
+        &:hover .gallery__name {
+            width: 100%;
+            transition: width 1.5s .5s;
+        }
+
+        &:hover .gallery__descr {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s 1s;
+        }
+
+        &:hover .gallery__img {
+            box-shadow: 1rem 1rem .1rem $color-red, 
+                    2rem 2rem .1rem $color-green-light, 
+                    3rem 3rem .1rem $color-blue,
+                    4rem 4rem .1rem $color-pink;
+            filter: blur(.5rem);
+            opacity: .5;
+            transform: scale(1.1);
+        }
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: $color-white;
+            z-index: 10;
+        }
+
+        &::before {
+            width: 0.2rem;
+            top: 2vw;
+            left: 80%;
+            height: 0;
+            transition: height .5s;
+        }
+
+        &::after {
+            top: 30%;
+            left: 2rem;
+            width: 0;
+            height: .2rem;
+            transition: width .5s;
+        }
+    }
+
+    &__name {
+        position: absolute;
+        top: 3rem;
+        left: 3rem;
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .1rem;
+        color: $color-white;
+        width: 0;
+        overflow: hidden;
+        transition: width .3s;
+    }
+
+    &__descr {
+        position: absolute;
+        bottom: 3vw;
+        left: 2rem;
+        width: 70%;
+        font-size: 1.5rem;
+        font-weight: 300;
+        letter-spacing: .1rem;
+        text-transform: uppercase;
+        color: $color-white;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s;
+    }
+}

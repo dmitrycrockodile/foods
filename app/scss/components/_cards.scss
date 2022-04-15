@@ -1,0 +1,91 @@
+.cards-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    @include respond(tab-land) {
+		margin-top: 10rem;
+	}
+
+    @include respond(tab-mini-land) {
+		flex-wrap: wrap;
+	}
+}
+
+.card {
+    width: 30rem;
+    background-color: $color-alpine;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1rem 1rem 1rem $color-black;
+    position: relative;
+    transform: rotateY(20deg) skewX(-2deg);
+    transition: transform .5s, box-shadow .5s;
+
+    @include respond(tab-mini-land) {
+		margin: 5rem;
+	}
+
+    &:hover {
+        transform: rotateY(20deg) skewX(-2deg) translateY(-3rem);
+        box-shadow: 2rem 2rem 2rem $color-black;
+    }
+
+    &::before, 
+    &::after {
+        content: '';
+        position: absolute;
+        box-shadow: -.1rem -.1rem .1rem $color-black;
+    }
+
+    &::before {
+        height: 100%;
+        width: 1rem;
+        background-color: $color-pacifika;
+        top: 0;
+        left: -1rem;
+        transform: skewY(45deg);
+        transform-origin: right;
+    }
+
+    &::after {
+        height: 1rem;
+        width: 100%;
+        background-color: $color-haclenda;
+        top: -1rem;
+        left: 0;
+        transform: skewX(45deg);
+        transform-origin: bottom;
+    }
+
+    &__img {
+        width: 100%;
+    }
+
+    &__name {
+        font-size: 3rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: .5rem;
+        color: $color-grey;
+        margin: 2rem 0;
+        text-shadow: .15rem .15rem .15rem $color-black;
+    }
+
+    &__btn {
+        width: 70%;
+        background-color: $color-grey;
+        color: $color-grey-white;
+        border-radius: 5rem;
+        font-size: 1.5rem;
+        font-weight: 800;
+        letter-spacing: .2rem;
+        text-transform: capitalize;
+        border: none;
+        padding: .5rem 0;
+        cursor: pointer;
+        box-shadow: -.2rem -.2rem .2rem $color-black;
+    } 
+}
